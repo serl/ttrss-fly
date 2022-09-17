@@ -1,0 +1,4 @@
+app: /opt/tt-rss/startup.sh
+# backups: /opt/tt-rss/dcron.sh -f
+updater: sleep 2m && /opt/tt-rss/updater.sh # wait extra time to make sure install is done
+web-nginx: nginx -g 'daemon off;'

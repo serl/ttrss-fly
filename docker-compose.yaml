@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - 127.0.0.1:8280:80
+    environment:
+      - TTRSS_SELF_URL_PATH=http://localhost:8280/tt-rss
+      - DATABASE_URL=postgres://puser:very_secret@db:5432/ttrss_test
+      - ADMIN_USER_PASS=admin
+    volumes:
+        - ./app:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=puser
+      - POSTGRES_PASSWORD=very_secret
+      - POSTGRES_DB=ttrss_test
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+volumes:
+    postgres:
