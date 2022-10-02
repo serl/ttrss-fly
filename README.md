@@ -14,7 +14,7 @@ PREFIX=your-name
 # Create a db instance, if you don't have one already. Select "Development" to stay on free tier.
 flyctl postgres create --name $PREFIX-db
 
-# Create the tt-rss application
+# Create the TT-RSS application
 flyctl launch --name $PREFIX-ttrss --no-deploy
 
 # Attach the database to the app
@@ -46,6 +46,14 @@ cd /var/www/html/tt-rss/plugins.local
 # Follow the install instructions
 # For example, for https://community.tt-rss.org/t/favicon-badge-plugin/1441:
 git clone https://github.com/ctag/favicon_badge
+```
+
+## Update TT-RSS
+
+This will rebuild the container using the latest upstream version:
+
+```sh
+flyctl deploy
 ```
 
 ## Local setup
