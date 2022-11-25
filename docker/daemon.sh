@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-_DB_REGEX='^postgres://\(.\+\):\(.\+\)@\(.\+\):\([0-9]\+\)/\(.\+\)$'
+_DB_REGEX='^postgres://\(.\+\):\(.\+\)@\(.\+\):\([0-9]\+\)/\(.\+\)\??.*$'
 
 TTRSS_DB_USER="$(echo "$DATABASE_URL" | sed -n "s|$_DB_REGEX|\1|p")"
 TTRSS_DB_PASS="$(echo "$DATABASE_URL" | sed -n "s|$_DB_REGEX|\2|p")"
